@@ -1,0 +1,131 @@
+{% extends "base.html" %}
+
+{% block title %}
+Quiz - QuizMaster
+{% endblock %}
+
+{% block content %}
+
+<div class="quiz-page">
+
+
+<div class="quiz-header">
+    <div>
+        <span class="quiz-label">TEST YOUR KNOWLEDGE</span>
+        <h1>Online Quiz</h1>
+        <p>Choose the correct answer for each question.</p>
+    </div>
+
+    <div class="question-count">
+        {{ questions|length }} Questions
+    </div>
+</div>
+
+{% if questions %}
+
+<form method="POST" action="{{ url_for('quiz.quiz') }}">
+
+    <div class="quiz-list">
+
+        {% for question in questions %}
+
+        <div class="quiz-card">
+
+            <div class="question-number">
+                Question {{ loop.index }}
+            </div>
+
+            <h2>
+                {{ question.question }}
+            </h2>
+
+            <div class="options">
+
+                <label class="option">
+                    <input
+                        type="radio"
+                        name="question_{{ question.id }}"
+                        value="A"
+                        required
+                    >
+                    <span class="option-letter">A</span>
+                    <span>{{ question.option_a }}</span>
+                </label>
+
+                <label class="option">
+                    <input
+                        type="radio"
+                        name="question_{{ question.id }}"
+                        value="B"
+                    >
+                    <span class="option-letter">B</span>
+                    <span>{{ question.option_b }}</span>
+                </label>
+
+                <label class="option">
+                    <input
+                        type="radio"
+                        name="question_{{ question.id }}"
+                        value="C"
+                    >
+                    <span class="option-letter">C</span>
+                    <span>{{ question.option_c }}</span>
+                </label>
+
+                <label class="option">
+                    <input
+                        type="radio"
+                        name="question_{{ question.id }}"
+                        value="D"
+                    >
+                    <span class="option-letter">D</span>
+                    <span>{{ question.option_d }}</span>
+                </label>
+
+            </div>
+
+        </div>
+
+        {% endfor %}
+
+    </div>
+
+    <div class="quiz-submit">
+
+        <button type="submit" class="submit-quiz">
+            Submit Quiz 🚀
+        </button>
+
+    </div>
+
+</form>
+
+{% else %}
+
+<div class="empty-quiz">
+
+    <div class="empty-icon">
+        📝
+    </div>
+
+    <h2>No Questions Available</h2>
+
+    <p>
+        There are no quiz questions yet. Add some questions first.
+    </p>
+
+    <a
+        href="{{ url_for('question.add_question') }}"
+        class="primary-btn"
+    >
+        Add Question
+    </a>
+
+</div>
+
+{% endif %}
+
+
+</div>
+
+{% endblock %}

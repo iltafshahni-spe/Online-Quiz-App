@@ -1,0 +1,75 @@
+{% extends "base.html" %}
+
+{% block title %}Add Question{% endblock %}
+
+{% block content %}
+
+<div class="auth-box">
+
+    <h2>Add New Question</h2>
+
+    <p>Add a question to the quiz.</p>
+
+    <form method="POST">
+
+        <label>Question</label>
+        <input
+            type="text"
+            name="question"
+            placeholder="Enter question"
+            required
+        >
+
+        <label>Option A</label>
+        <input
+            type="text"
+            name="option_a"
+            placeholder="Enter option A"
+            required
+        >
+
+        <label>Option B</label>
+        <input
+            type="text"
+            name="option_b"
+            placeholder="Enter option B"
+            required
+        >
+
+        <label>Option C</label>
+        <input
+            type="text"
+            name="option_c"
+            placeholder="Enter option C"
+            required
+        >
+
+        <label>Option D</label>
+        <input
+            type="text"
+            name="option_d"
+            placeholder="Enter option D"
+            required
+        >
+
+        <label>Correct Answer</label>
+
+        <select name="correct_answer" required>
+            <option value="">Select Answer</option>
+            <option value="A">Option A</option>
+            <option value="B">Option B</option>
+            <option value="C">Option C</option>
+            <option value="D">Option D</option>
+        </select>
+
+        <br><br>
+
+        <button type="submit">
+            Add Question
+        </button>
+
+    </form>
+
+</div>
+
+{% endblock %}

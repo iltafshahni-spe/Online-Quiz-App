@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>{% block title %}Online Quiz{% endblock %}</title>
+
+<link rel="stylesheet"
+      href="{{ url_for('static', filename='style.css') }}">
+
+</head>
+
+<body>
+
+
+<nav class="navbar">
+
+    <div class="nav-brand">
+
+        <div class="logo">Q</div>
+
+        <div>
+            <h2>QuizMaster</h2>
+            <span>Online Quiz Platform</span>
+        </div>
+
+    </div>
+
+
+    <div class="nav-links">
+
+        <a href="{{ url_for('question.view_question') }}">
+            Quiz
+        </a>
+
+        <a href="{{ url_for('question.add_question') }}">
+            Add Question
+        </a>
+
+
+        {% if session.get("id") %}
+
+            <a href="{{ url_for('auth.logout') }}"
+               class="logout-btn">
+                Logout
+            </a>
+
+        {% else %}
+
+            <a href="{{ url_for('auth.login') }}">
+                Login
+            </a>
+
+            <a href="{{ url_for('auth.register') }}"
+               class="register-btn">
+                Register
+            </a>
+
+        {% endif %}
+
+    </div>
+
+</nav>
+
+
+<main class="main-container">
+
+    {% with messages = get_flashed_messages(with_categories=true) %}
+
+        {% if messages %}
+
+            <div class="flash-container">
+
+                {% for category, message in messages %}
+
+                    <div class="flash {{ category }}">
+                        {{ message }}
+                    </div>
+
+                {% endfor %}
+
+            </div>
+
+        {% endif %}
+
+    {% endwith %}
+
+
+    {% block content %}
+
+    {% endblock %}
+
+</main>
+
+
+<footer>
+
+    <div class="footer-content">
+
+        <h3>QuizMaster</h3>
+
+        <p>
+            Test your knowledge. Learn something new.
+        </p>
+
+        <span>
+            © 2026 Online Quiz Platform
+        </span>
+
+    </div>
+
+</footer>
+
+
+</body>
+
+</html>

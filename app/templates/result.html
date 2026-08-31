@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+
+{% block title %}
+Quiz Result - QuizMaster
+{% endblock %}
+
+{% block content %}
+
+<div class="result-page">
+
+
+<div class="result-card">
+
+    <div class="result-icon">
+        🏆
+    </div>
+
+    <span class="result-label">
+        QUIZ COMPLETED
+    </span>
+
+    <h1>Great Job!</h1>
+
+    <p class="result-subtitle">
+        You have completed the quiz successfully.
+    </p>
+
+    <div class="score-box">
+        <span>Your Score</span>
+
+        <h2>
+            {{ score }} / {{ total }}
+        </h2>
+
+        {% if total > 0 %}
+            <p>
+                {{ ((score / total) * 100)|round(0)|int }}% Correct
+            </p>
+        {% endif %}
+    </div>
+
+    <div class="result-actions">
+
+        <a href="{{ url_for('quiz.quiz') }}" class="primary-btn">
+            Try Again
+        </a>
+
+        <a href="{{ url_for('auth.dashboard') }}" class="secondary-btn">
+            Dashboard
+        </a>
+
+    </div>
+
+</div>
+
+
+</div>
+
+{% endblock %}

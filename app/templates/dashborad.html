@@ -1,0 +1,165 @@
+{% extends "base.html" %}
+
+{% block title %}
+
+Dashboard - QuizMaster
+
+{% endblock %}
+
+{% block content %}
+
+<div class="dashboard">
+
+
+<div class="dashboard-header">
+
+    <div>
+
+        <span class="welcome-label">WELCOME BACK 👋</span>
+
+        <h1>
+            Quiz Dashboard
+        </h1>
+
+        <p>
+            Manage your quizzes and test your knowledge.
+        </p>
+
+    </div>
+
+    <a href="{{ url_for('question.view_question') }}" class="primary-btn">
+        Start Quiz
+    </a>
+
+</div>
+
+
+<div class="stats-grid">
+
+    <div class="stat-card">
+
+        <div class="stat-icon">
+            📝
+        </div>
+
+        <div>
+            <span>Total Questions</span>
+            <h2>{{ total_questions|default(0) }}</h2>
+        </div>
+
+    </div>
+
+
+    <div class="stat-card">
+
+        <div class="stat-icon">
+            🎯
+        </div>
+
+        <div>
+            <span>Quiz Attempts</span>
+            <h2>{{ quiz_attempts|default(0) }}</h2>
+        </div>
+
+    </div>
+
+
+    <div class="stat-card">
+
+        <div class="stat-icon">
+            🏆
+        </div>
+
+        <div>
+            <span>Best Score</span>
+            <h2>{{ best_score|default(0) }}</h2>
+        </div>
+
+    </div>
+
+</div>
+
+
+<div class="dashboard-grid">
+
+    <div class="dashboard-card">
+
+        <div class="card-icon">
+            🚀
+        </div>
+
+        <h2>Take a Quiz</h2>
+
+        <p>
+            Answer questions and see how well you perform.
+        </p>
+
+        <a href="{{ url_for('question.view_question') }}" class="card-btn">
+            Start Quiz →
+        </a>
+
+    </div>
+
+
+    <div class="dashboard-card">
+
+        <div class="card-icon">
+            ➕
+        </div>
+
+        <h2>Add Question</h2>
+
+        <p>
+            Create a new question with four options and the correct answer.
+        </p>
+
+        <a href="{{ url_for('question.add_question') }}" class="card-btn">
+            Add Question →
+        </a>
+
+    </div>
+
+
+    <div class="dashboard-card">
+
+        <div class="card-icon">
+            📊
+        </div>
+
+        <h2>Track Progress</h2>
+
+        <p>
+            Complete quizzes and improve your knowledge step by step.
+        </p>
+
+        <a href="{{ url_for('question.view_question') }}" class="card-btn">
+            View Quiz →
+        </a>
+
+    </div>
+
+</div>
+
+
+<div class="dashboard-banner">
+
+    <div>
+
+        <span>READY TO TEST YOUR KNOWLEDGE?</span>
+
+        <h2>
+            Challenge Yourself Today 🚀
+        </h2>
+
+    </div>
+
+    <a href="{{ url_for('question.view_question') }}" class="banner-btn">
+        Start Now
+    </a>
+
+</div>
+
+
+</div>
+
+{% endblock %}

@@ -1,0 +1,97 @@
+{% extends "base.html" %}
+
+{% block title %}Add Student - QuizMaster{% endblock %}
+
+{% block content %}
+
+<div class="auth-wrapper">
+    <div class="auth-card">
+
+
+    <div class="auth-icon">
+        🎓
+    </div>
+
+    <h1>Add Student</h1>
+
+    <p class="auth-subtitle">
+        Add a new student to QuizMaster.
+    </p>
+
+    <form method="POST">
+
+        <div class="form-group">
+            <label for="name">Student Name</label>
+            <input
+                type="text"
+                id="name"
+                name="name"
+                placeholder="Enter student name"
+                required
+            >
+        </div>
+
+        <div class="form-group">
+            <label for="email">Email Address</label>
+            <input
+                type="email"
+                id="email"
+                name="email"
+                placeholder="Enter student email"
+                required
+            >
+        </div>
+
+        <div class="form-group">
+            <label for="age">Age</label>
+            <input
+                type="number"
+                id="age"
+                name="age"
+                placeholder="Enter age"
+                required
+            >
+        </div>
+
+        <div class="form-group">
+            <label for="class_name">Class</label>
+            <input
+                type="text"
+                id="class_name"
+                name="class_name"
+                placeholder="Enter class"
+                required
+            >
+        </div>
+
+        <div class="form-group">
+            <label for="subject">Subject</label>
+            <input
+                type="text"
+                id="subject"
+                name="subject"
+                placeholder="Enter subject"
+                required
+            >
+        </div>
+
+        <button type="submit" class="auth-btn">
+            Add Student
+        </button>
+
+    </form>
+
+    <div class="auth-footer">
+        <p>
+            <a href="{{ url_for('students.view_students') }}">
+                ← Back to Students
+            </a>
+        </p>
+    </div>
+
+</div>
+
+
+</div>
+
+{% endblock %}
